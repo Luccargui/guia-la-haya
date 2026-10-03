@@ -9,6 +9,10 @@ npm install
 npm run dev
 ```
 
+## Despliegue en Netlify
+
+El archivo `netlify.toml` configura `npm ci --include=dev && npm run build` como comando de compilación y `dist` como directorio de publicación. La instalación explícita permite compilar también cuando el despliegue se ejecuta con Netlify CLI sin una instalación previa de dependencias. Mantén `package.json` y `package-lock.json` en Git, pero no `node_modules/`: la instalación incluye Vite y genera los ejecutables con los permisos adecuados.
+
 ## Google Maps
 
 Abre `src/App.jsx` y busca:
