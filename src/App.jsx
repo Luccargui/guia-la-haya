@@ -5,7 +5,7 @@ import {
   Train, Coffee, Beer, History, Crown, Shield, CircleDollarSign, Menu, X
 } from "lucide-react";
 
-const GOOGLE_MAPS_LIST_URL = "https://maps.app.goo.gl/cNTVF1s5MeNAzCoMA?g_st=i";
+const GOOGLE_MAPS_LIST_URL = "https://maps.app.goo.gl/ReeJX3avhQ99TfGf6";
 
 const IMG = {
   coat: "https://commons.wikimedia.org/wiki/Special:FilePath/Den_Haag_wapen.svg",
@@ -13,164 +13,224 @@ const IMG = {
   binnenhofNow: "https://commons.wikimedia.org/wiki/Special:FilePath/Binnenhof%20Den%20Haag.jpg",
   binnenhofOld: "https://commons.wikimedia.org/wiki/Special:FilePath/Binnenhof%2C%20The%20Hague%201868.jpg",
   stijkel: "https://stichtingnationaleherdenkingsgravenhage.nl/wp-content/uploads/2018/11/Stijkelgroep1.jpg",
-  palace: "https://commons.wikimedia.org/wiki/Special:FilePath/Paleis%20Noordeinde.jpg"
+  palace: "https://commons.wikimedia.org/wiki/Special:FilePath/Paleis%20Noordeinde.jpg",
+  supreme: "https://www.rijksvastgoedbedrijf.nl/site/binaries/content/gallery/site-content/content-afbeeldingen/vastgoed/den-haag-hoge-raad/den-haag-korte-voorhout-8-hoge-raad-foto-bas-kijzers-3-februari-2016-a.jpg"
 };
 
 const stops = [
   {
-    id: "binnenhof", time: "11:35", title: "Binnenhof & Ridderzaal", area: "Centro histórico",
-    duration: "45 min", type: "Monumento", color: "sage", map: "Binnenhof, Den Haag, Netherlands",
+    id: "nieuwe-kerk", time: "11:35", title: "Nieuwe Kerk", area: "Spui",
+    duration: "20 min", type: "Iglesia histórica", color: "sage", map: "Nieuwe Kerk, Spui 175, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/17998%20Nieuwe%20Kerk.jpg",
+    facts: [
+      "La Nieuwe Kerk se construyó entre 1649 y 1656 porque la Grote Kerk ya no podía absorber el crecimiento de la población. Se diseñó como una iglesia protestante nueva, no como una ampliación de la iglesia medieval.",
+      "Su planta central y sus espacios relativamente luminosos reflejan una arquitectura religiosa propia de la República neerlandesa del siglo XVII.",
+      "Hoy ya no funciona principalmente como parroquia: el edificio es un monumento y se utiliza sobre todo como sala de conciertos y espacio para actos culturales."
+    ],
+    guide: "Empieza aquí la ruta histórica. Fíjate en que la Nieuwe Kerk pertenece a una Haya que ya estaba creciendo alrededor del viejo núcleo del Binnenhof: es la respuesta del siglo XVII a una ciudad cada vez más poblada.",
+    curious: "Baruch Spinoza vivió en La Haya y fue enterrado en un sepulcro alquilado en el entorno de la Nieuwe Kerk.",
+    visit: "Exterior gratuito. El acceso interior depende de conciertos, eventos y horarios del recinto.",
+    source: "Nieuwe Kerk Den Haag", sourceUrl: "https://www.nieuwekerkdenhaag.nl/gebouw"
+  },
+  {
+    id: "grote-kerk", time: "12:00", title: "Grote of Sint-Jacobskerk", area: "Torenstraat",
+    duration: "25 min", type: "Iglesia histórica", color: "purple", map: "Grote Kerk, Rond de Grote Kerk 12, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Grote%20Kerk%20Den%20Haag.jpg",
+    facts: [
+      "La Grote Kerk nació como iglesia parroquial medieval a medida que crecía el asentamiento alrededor del hof de los condes de Holanda. El edificio actual es el resultado de varias fases de ampliación y reconstrucción.",
+      "La gran torre hexagonal se levantó alrededor de 1420 y alcanza unos 92,5 metros, convirtiéndose durante siglos en uno de los grandes puntos de referencia de la ciudad.",
+      "La iglesia mantiene una relación estrecha con la Casa de Orange: varios miembros de la familia fueron bautizados aquí.",
+      "Actualmente combina su función religiosa con conciertos, exposiciones y otros acontecimientos culturales."
+    ],
+    guide: "Mira la torre antes de entrar. Su forma hexagonal cambia mucho según el ángulo y ayuda a entender por qué la Grote Kerk aparece constantemente en los mapas históricos de La Haya.",
+    curious: "El campanario conserva campanas históricas y algunas siguen formando parte del paisaje sonoro de la ciudad.",
+    visit: "La visita interior depende del calendario del templo y de los eventos. La entrada a la iglesia puede ser gratuita en determinados horarios.",
+    source: "Grote Kerk Den Haag", sourceUrl: "https://grote-kerk.nl/bezoek-de-kerk/"
+  },
+  {
+    id: "haagse-harry", time: "12:35", title: "Standbeeld Haagse Harry", area: "Grote Markt",
+    duration: "10 min", type: "Arte urbano", color: "ochre", map: "Standbeeld Haagse Harry, Grote Markt, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Den%20Haag%20-%20Standbeeld%20Haagse%20Harry%20%2839790910722%29.jpg",
+    facts: [
+      "Haagse Harry es un personaje de cómic creado por el dibujante Marnix Rueb. Habla en un fuerte dialecto de La Haya y se convirtió en un icono popular de la identidad local.",
+      "La estatua de la Grote Markt transforma un personaje de viñeta en un monumento urbano reconocible y deliberadamente poco solemne.",
+      "El personaje apareció a comienzos de los años noventa y sus textos fonéticos ayudan a conservar y caricaturizar el dialecto haags."
+    ],
+    guide: "Esta es la parada que rompe el tono monumental. Después de iglesias y edificios de gobierno, La Haya se presenta a sí misma con humor, dialecto y cultura popular.",
+    curious: "El personaje es tan reconocible que el Ayuntamiento y la ciudad lo utilizan como uno de los símbolos culturales más característicos de La Haya.",
+    visit: "Parada exterior gratuita.",
+    source: "The Hague Info Store", sourceUrl: "https://shop.denhaag.com/"
+  },
+  {
+    id: "butter-bell", time: "12:50", title: "Butter Bell · Boterklokje", area: "Prinsegracht",
+    duration: "10 min", type: "Curiosidad histórica", color: "cream", map: "Boterklokje, Prinsegracht 1, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Boterwaag%20Den%20Haag.jpg",
+    facts: [
+      "El Boterklokje está en la fachada de la antigua Boterwaag, donde se pesaban y comerciaban mantequilla y queso. El edificio de mercado se construyó en el siglo XVII y fue ampliado hasta convertirse en un elemento destacado de la Grote Markt.",
+      "La campana servía para señalar el inicio y el final de la jornada comercial. El cierre era a las 13:00.",
+      "La campana original desapareció y el marco quedó en la fachada. En 2013 se instaló una nueva campana, que vuelve a sonar los días laborables a las 13:00 durante aproximadamente un minuto."
+    ],
+    guide: "Es una parada diminuta, pero cuenta algo muy grande: cómo las campanas regulaban la vida cotidiana antes de que existieran relojes públicos y horarios digitales.",
+    curious: "Si haces la ruta un día laborable y llegas justo antes de las 13:00, puedes escucharla en funcionamiento.",
+    visit: "Exterior gratuito.",
+    source: "Stichting Carillon Den Haag", sourceUrl: "https://www.stichtingcarillondenhaag.nl/activiteiten/"
+  },
+  {
+    id: "chinatown-gate", time: "13:05", title: "Chinatown Gate", area: "Wagenstraat",
+    duration: "10 min", type: "Barrio histórico", color: "rose", map: "Chinatown Gate, Wagenstraat 35-37, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Den%20Haag%20-%20Wagenstraat%20-%20View%20on%20Chinese%20Gate.jpg",
+    facts: [
+      "La puerta china marca una de las entradas al Chinatown de La Haya, un pequeño barrio asiático concentrado alrededor de Wagenstraat y sus calles cercanas.",
+      "La decoración, las linternas rojas y los rótulos bilingües hacen visible una historia de migración, comercio y vida comunitaria dentro del centro histórico.",
+      "Las puertas fueron realizadas con materiales procedentes de China y por artesanos chinos; sus numerosos elementos convierten la estructura en un objeto decorativo además de una puerta simbólica."
+    ],
+    guide: "No la trates como una atracción aislada: entra por la puerta y recorre las calles que siguen. La gracia está en el cambio de ambiente en apenas unos metros.",
+    curious: "Chinatown es especialmente animado durante celebraciones como el Año Nuevo chino y el Festival de la Luna.",
+    visit: "Exterior gratuito.",
+    source: "Den Haag / Chinatown", sourceUrl: "https://www.denhaag.com/"
+  },
+  {
+    id: "chinese-street", time: "13:20", title: "Chinese Street · Chinatown", area: "Wagenstraat",
+    duration: "15 min", type: "Barrio", color: "rose", map: "Wagenstraat, Chinatown, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Wagenstraat%20Den%20Haag%202019.jpg",
+    facts: [
+      "Wagenstraat y las calles próximas forman el corazón del Chinatown de La Haya. Es una zona pequeña pero muy reconocible por las linternas, los comercios asiáticos y la señalización en neerlandés y chino.",
+      "El barrio se desarrolló sobre una parte muy céntrica de la ciudad, de modo que la historia de inmigración y comercio quedó integrada en el tejido urbano histórico.",
+      "Es también una de las zonas gastronómicas más variadas del centro, con restaurantes y tiendas especializadas."
+    ],
+    guide: "Aquí merece la pena caminar sin prisa unos minutos y mirar escaparates y rótulos. La ruta deja por un momento la monumentalidad política para enseñar otra capa de la ciudad.",
+    curious: "Las celebraciones del Año Nuevo chino cambian por completo el ambiente de estas calles, con decoración, actividades y mucha más gente.",
+    visit: "Paseo exterior gratuito.",
+    source: "Chinatown Den Haag", sourceUrl: "https://www.denhaag.com/"
+  },
+  {
+    id: "cat-street-art", time: "13:45", title: "Cat Street Art · Kattensteeg", area: "Achterom",
+    duration: "10 min", type: "Arte urbano", color: "ink", map: "Cat Street Art, Achterom 39E, Den Haag, Netherlands",
+    image: "https://denhaag.com/sites/default/files/styles/keyvisual_1220x640/public/2021-03/Kattensteeg3.jpg?h=1f651cd9&itok=n0pZixOU",
+    facts: [
+      "La Kattensteeg es un pequeño callejón del centro convertido en una galería de arte urbano dedicada a los gatos.",
+      "La intervención fue impulsada junto con The Hague Street Art para transformar un espacio de paso en un lugar reconocible y divertido.",
+      "Los murales y detalles funcionan como una pequeña colección al aire libre: no necesitas entrada ni reservar para recorrerla."
+    ],
+    guide: "Es una parada de cinco o diez minutos, perfecta para mirar hacia arriba, las paredes y los pequeños detalles. Está escondida lo suficiente como para sentirse como un descubrimiento.",
+    curious: "La calle se hizo especialmente conocida como 'Kattensteeg' a partir de la renovación artística de la zona desde 2020.",
+    visit: "Exterior gratuito.",
+    source: "The Hague Street Art", sourceUrl: "https://www.thehaguestreetart.nl/"
+  },
+  {
+    id: "former-justice", time: "14:05", title: "Antiguo Ministerio de Justicia", area: "Plein",
+    duration: "15 min", type: "Edificio histórico", color: "blue", map: "Former Ministry of Justice, Plein 2B, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Den%20Haag%20-%20Het%20oude%20Ministerie%20van%20Justitie%20%2838938487975%29.jpg",
+    facts: [
+      "El edificio del Plein se construyó a finales del siglo XIX como Ministerio de Justicia, dentro de la expansión monumental de la Haya administrativa.",
+      "Su arquitectura neorrenacentista expresa deliberadamente la importancia del Estado y de sus instituciones.",
+      "Posteriormente pasó a formar parte del complejo de la Tweede Kamer. En su interior destaca la Handelingenkamer, antigua biblioteca parlamentaria, cuando el acceso está permitido."
+    ],
+    guide: "Míralo desde Plein y compáralo con el Binnenhof que está justo detrás: aquí se ve cómo el Estado neerlandés fue ampliando sus edificios administrativos alrededor del núcleo medieval.",
+    curious: "El edificio no nació como museo ni como sede parlamentaria: su primera función fue específicamente ministerial.",
+    visit: "Exterior gratuito. El acceso interior depende de actividades y visitas organizadas.",
+    source: "Monumentenzorg / The Hague", sourceUrl: "https://www.denhaag.nl/"
+  },
+  {
+    id: "binnenhof", time: "14:25", title: "Binnenhof", area: "Centro político histórico",
+    duration: "30 min", type: "Complejo histórico", color: "sage", map: "Binnenhof, Den Haag, Netherlands",
     image: IMG.binnenhofNow,
     facts: [
-      "La historia urbana de La Haya arranca aquí: alrededor de 1230 el conde Floris IV compró un hof en la zona de Die Haghe. Su hijo Guillermo II y después Floris V lo ampliaron hasta convertirlo en residencia de los condes de Holanda.",
-      "La Ridderzaal, terminada a finales del siglo XIII, era la gran sala ceremonial de la corte. Hoy es el escenario del discurso del trono durante Prinsjesdag.",
-      "La ausencia de murallas medievales explica una rareza de La Haya: durante siglos fue un pueblo con funciones de ciudad, pero sin los derechos urbanos y defensas que tenían muchas ciudades neerlandesas.",
-      "El Binnenhof está actualmente en una gran renovación. Eso hace especialmente interesante comparar el lugar actual con los dibujos y mapas históricos."
+      "El origen del Binnenhof está en el hof que el conde Floris IV adquirió alrededor de 1230. Sus sucesores lo ampliaron hasta convertirlo en residencia de los condes de Holanda.",
+      "La Ridderzaal, terminada a finales del siglo XIII, fue concebida como gran sala ceremonial de la corte y no como iglesia. Hoy sigue siendo uno de los grandes símbolos del Estado neerlandés.",
+      "Durante siglos el complejo fue absorbiendo funciones políticas hasta convertirse en el corazón institucional de los Países Bajos.",
+      "Actualmente está sometido a una renovación de gran escala y el acceso ordinario al complejo está restringido."
     ],
-    guide: "Párate junto al Hofvijver y mira el conjunto como lo habría visto un visitante medieval: no había una gran ciudad alrededor, sino el hof del conde, agua, caminos y campo. La política llegó antes que la gran ciudad.",
-    curious: "El Binnenhof es uno de los complejos parlamentarios históricos más antiguos de Europa todavía vinculados a la vida política.",
-    visit: "Para esta ruta recomiendo disfrutarlo por fuera y desde el Hofvijver. El acceso interior depende de las obras y de visitas programadas.",
-    source: "Haags Gemeentearchief", sourceUrl: "https://haagsgemeentearchief.nl/ontdek-de-stad/verhalen-van-de-stad/het-ontstaan-van-den-haag"
+    guide: "Párate en el Buitenhof y después busca la perspectiva hacia el Hofvijver. El Binnenhof no es un palacio aislado: es un conjunto que fue creciendo alrededor del antiguo hof de los condes.",
+    curious: "El Binnenhof está en el centro político de una ciudad que durante mucho tiempo no tuvo los derechos urbanos típicos de otras ciudades neerlandesas.",
+    visit: "La ruta lo plantea como visita exterior. Durante la renovación existe un punto de observación temporal del Binnenhof; comprueba su apertura el día de la visita.",
+    source: "The Hague / Binnenhof", sourceUrl: "https://www.denhaag.nl/"
   },
   {
-    id: "hofvijver", time: "12:25", title: "Hofvijver & Lange Vijverberg", area: "Junto al Binnenhof",
-    duration: "25 min", type: "Paisaje histórico", color: "water", map: "Hofvijver, Den Haag, Netherlands",
+    id: "vijverhof", time: "15:05", title: "Vijverhof", area: "Buitenhof / Hofvijver",
+    duration: "15 min", type: "Edificio histórico", color: "water", map: "Vijverhof, Buitenhof 37, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Den%20Haag%20-%20Buitenhof%2037.JPG",
     facts: [
-      "El Hofvijver está unido al origen del hof de los condes. Desde aquí se entiende por qué el complejo del Binnenhof se instaló en este paisaje de agua, dunas y bosques.",
-      "En las representaciones históricas el estanque aparece como parte del paisaje cortesano, no como un simple elemento ornamental.",
-      "La perspectiva desde Lange Vijverberg reúne en pocos metros el Binnenhof, la torre Maurits y el Mauritshuis."
+      "Vijverhof, en Buitenhof 37, es un edificio protegido como monumento nacional. Su historia refleja la transformación de La Haya desde residencia de élites hasta capital administrativa.",
+      "El conjunto ha tenido sucesivos usos, vinculados a residencia, almacenamiento de colecciones, educación y administración pública.",
+      "Su posición junto al Binnenhof y el Hofvijver lo convierte en una pieza especialmente buena para entender cómo distintas épocas reutilizaron el mismo centro de poder."
     ],
-    guide: "Este es el punto donde la ciudad se explica sola. A tu espalda queda la ciudad moderna; delante, el estanque que acompañó al poder desde la Edad Media.",
-    curious: "En las imágenes del siglo XVI ya aparece una actividad intensa alrededor del estanque: barcos, caballos, vendedores y vida urbana.",
-    visit: "Parada exterior gratuita.",
-    source: "Haagse Kaart / Haags Historisch Museum", sourceUrl: "https://www.haagsekaart.nl/"
+    guide: "No necesitas entrar para apreciarlo. Mira la fachada como una capa intermedia entre el paisaje medieval del Binnenhof y la ciudad administrativa posterior.",
+    curious: "La documentación histórica relaciona el complejo con el antiguo Valkhuis, una huella poco visible hoy de la evolución del área del Buitenhof.",
+    visit: "Exterior gratuito.",
+    source: "Monumentenzorg Den Haag", sourceUrl: "https://www.monumentenzorgdenhaag.nl/"
   },
   {
-    id: "mauritshuis", time: "12:50", title: "Mauritshuis", area: "Plein / Hofvijver",
-    duration: "1 h 30 min", type: "Museo", color: "ochre", map: "Mauritshuis, Plein 29, Den Haag, Netherlands",
+    id: "mauritshuis", time: "15:25", title: "Mauritshuis", area: "Plein / Hofvijver",
+    duration: "1 h 15 min", type: "Museo", color: "ochre", map: "Mauritshuis, Plein 29, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Mauritshuis%20Den%20Haag.jpg",
     facts: [
-      "El edificio se construyó entre 1633 y 1644 para Johan Maurits de Nassau-Siegen y es uno de los ejemplos más refinados del clasicismo neerlandés.",
-      "Desde 1822 funciona como museo y conserva una colección concentrada de maestros neerlandeses y flamencos.",
-      "Aquí se encuentra La joven de la perla de Vermeer, además de obras de Rembrandt, Fabritius, Hals y otros grandes nombres.",
-      "La colección permite ver cómo el gusto artístico de la República neerlandesa convirtió escenas domésticas, paisajes y retratos en grandes temas culturales."
+      "El edificio se construyó entre 1633 y 1644 como residencia urbana de Johan Maurits de Nassau-Siegen. No nació como museo: esa función llegó en 1822, cuando pasó a albergar la colección real de pintura.",
+      "Hoy es uno de los museos de pintura neerlandesa y flamenca más importantes del país y conserva obras de Vermeer, Rembrandt, Fabritius y Hals.",
+      "Su escala relativamente pequeña permite visitar una colección de primer nivel sin recorrer un edificio gigantesco."
     ],
-    guide: "Entra pensando en una casa de coleccionista más que en un museo moderno. Las salas son parte de la experiencia: estás viendo arte dentro de una residencia aristocrática del siglo XVII.",
-    curious: "En 2026 el Mauritshuis mantiene una tarifa especial de 4 € para visitantes residentes en la UE entre las 16:00 y las 18:00.",
-    visit: "Adultos €21. Combo Mauritshuis + Galería Príncipe Guillermo V: €24. Martes-domingo 10:00–18:00. El 4 de octubre de 2026 La joven de la perla vuelve a estar disponible según el calendario oficial.",
+    guide: "Entra pensando en una casa aristocrática del siglo XVII que acabó convertida en museo. Las proporciones de las salas son parte de la historia de la colección.",
+    curious: "La joven de la perla de Vermeer es su obra más famosa, pero el museo también conserva La lección de anatomía del Dr. Nicolaes Tulp de Rembrandt.",
+    visit: "Adultos €21. Combo Mauritshuis + Galería Príncipe Guillermo V: €24. Comprueba el calendario oficial antes de ir.",
     price: "€21 adulto · €24 combo",
     source: "Mauritshuis", sourceUrl: "https://www.mauritshuis.nl/en/visit"
   },
   {
-    id: "prince-william", time: "14:20", title: "Galería Príncipe Guillermo V", area: "Buitenhof",
-    duration: "30 min", type: "Museo", color: "rose", map: "Prince William V Gallery, Den Haag, Netherlands",
+    id: "thorbecke", time: "16:55", title: "Monumento a Thorbecke", area: "Lange Voorhout",
+    duration: "10 min", type: "Monumento", color: "silver", map: "Thorbecke Monument, Lange Voorhout, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Den%20Haag%20-%20Lange%20Voorhout%20-%20Thorbecke%20Monument%20by%20Thom%20Puckey%202017.jpg",
     facts: [
-      "La galería fue creada en 1774 para hacer pública la colección de Guillermo V de Orange-Nassau.",
-      "Se presenta como el primer museo de los Países Bajos.",
-      "Su interior conserva la estética de una galería del siglo XVIII: las pinturas cubren las paredes casi de suelo a techo."
+      "Johan Rudolph Thorbecke fue el político asociado a la reforma constitucional de 1848, una de las bases de la democracia parlamentaria neerlandesa moderna.",
+      "El monumento contemporáneo está situado en el Lange Voorhout, en pleno corazón político de La Haya.",
+      "Su orientación hacia la zona del Binnenhof y el Torentje forma parte de la lectura simbólica de la obra: el político parece mirar hacia el centro del poder parlamentario."
     ],
-    guide: "Aquí cambia la sensación: vienes de la pintura neerlandesa del Siglo de Oro y entras en la cultura cortesana del XVIII. Mira cómo la forma de colgar las obras también cuenta una historia.",
-    curious: "Es pequeña y está a pocos pasos del Mauritshuis; el combo permite visitarlas con una sola entrada.",
-    visit: "Martes-domingo 12:00–17:00. Adultos €8,50; gratis hasta 18 años. Combo con Mauritshuis: €24.",
-    price: "€8,50 adulto · €24 combo",
-    source: "Mauritshuis", sourceUrl: "https://www.mauritshuis.nl/en/visit"
+    guide: "Después del Mauritshuis, camina hacia Lange Voorhout. El monumento funciona mejor si recuerdas que acabas de estar frente a edificios donde se construyó y se ejerció ese sistema político.",
+    curious: "Es una obra de arte público contemporánea, no una estatua tradicionalista: utiliza materiales y formas abstractas para hablar de Thorbecke y de su legado.",
+    visit: "Exterior gratuito.",
+    source: "The Hague / Monumentenzorg", sourceUrl: "https://www.denhaag.nl/"
   },
   {
-    id: "lunch", time: "14:55", title: "Parada para comer · Plein / Noordeinde", area: "Centro",
-    duration: "60 min", type: "Comida", color: "cream", map: "Plein, Den Haag, Netherlands",
-    facts: [
-      "Plein fue originalmente un espacio relacionado con los jardines del Binnenhof y hoy funciona como una de las plazas más animadas del centro.",
-      "Desde aquí puedes desviarte muy poco hacia Noordeinde, Prinsestraat o Molenstraat para comer barato.",
-      "En la sección Restauración de esta guía encontrarás opciones de 4,5 estrellas o más y precios orientativos de 10–20 € por persona."
-    ],
-    guide: "Es una buena pausa para bajar el ritmo. La ciudad cortesana queda detrás y delante empieza el barrio de calles comerciales, cafés y pequeños restaurantes.",
-    curious: "La ruta evita volver sobre tus pasos: después de comer avanzamos hacia el barrio real de Noordeinde.",
-    visit: "Reserva aproximadamente una hora. En domingo comprueba el horario del local elegido."
-  },
-  {
-    id: "noordeinde", time: "15:55", title: "Palacio Noordeinde & Jardín del Palacio", area: "Noordeinde",
-    duration: "25 min", type: "Palacio", color: "blue", map: "Noordeinde Palace, Noordeinde 68, Den Haag, Netherlands",
-    image: IMG.palace,
-    facts: [
-      "Noordeinde es el lugar de trabajo del rey Willem-Alexander; allí están también las oficinas de la reina Máxima y gran parte del personal de la Casa Real.",
-      "El origen del palacio está en una gran casa señorial transformada en 1533. La relación con la Casa de Orange comenzó en 1591.",
-      "El palacio sufrió un incendio en 1948. Tras restauraciones, volvió a convertirse en un centro de trabajo de la monarquía.",
-      "El Jardín del Palacio, detrás del edificio, es un parque público y permite experimentar el contraste entre residencia real y espacio cotidiano.",
-      "La bandera que importa aquí no es simplemente la tricolor neerlandesa: cuando el rey está en los Países Bajos, se iza el estandarte real, una bandera dividida en cuatro cuarteles azul Nassau y naranja, con el escudo real coronado y los cuernos azules de Orange. Por eso verla ondear no confirma necesariamente que el rey esté trabajando dentro de Noordeinde; indica que está en el país."
-    ],
-    guide: "Fíjate en la bandera, pero con un matiz importante: el estandarte real ondea en Noordeinde y en Huis ten Bosch cuando el rey se encuentra en los Países Bajos. No es un indicador fiable de que esté trabajando justo en ese palacio. El estandarte tiene cuatro cuarteles en azul Nassau y naranja, el escudo real coronado y los cuernos de Orange. El palacio no es la residencia familiar: esa función corresponde a Huis ten Bosch.",
-    curious: "El estandarte real se iza tanto en Noordeinde como en Huis ten Bosch cuando el rey está en los Países Bajos; no significa necesariamente que esté dentro de ese edificio en ese momento.",
-    visit: "Exterior y Jardín del Palacio. Noordeinde no está abierto normalmente al público; las aperturas interiores se limitan a jornadas especiales.",
-    source: "Royal House of the Netherlands", sourceUrl: "https://www.royal-house.nl/topics/palaces"
-  },
-  {
-    id: "lange-voorhout", time: "16:25", title: "Lange Voorhout", area: "Museumkwartier",
-    duration: "25 min", type: "Avenida histórica", color: "green", map: "Lange Voorhout, Den Haag, Netherlands",
-    facts: [
-      "Su trazado se desarrolló entre los siglos XIV y XV y quedó ligado a la expansión del barrio cortesano.",
-      "En 1536 Carlos V ordenó plantar cuatro hileras de tilos, creando la avenida arbolada que reconocemos hoy.",
-      "Durante la Edad de Oro fue lugar de paseo y encuentro de la élite de La Haya; actualmente conecta varios de los principales espacios culturales."
-    ],
-    guide: "Camina despacio bajo los árboles. Esta avenida funciona como un palimpsesto: debajo del paisaje elegante todavía se intuye la ciudad de cortesanos, carruajes y embajadas.",
-    curious: "La arena de conchas utilizada antiguamente ayudaba a que los carruajes pudieran circular sin hundirse tanto en el barro.",
-    visit: "Paseo exterior gratuito.",
-    source: "DenHaag.com", sourceUrl: "https://denhaag.com/en/lange-voorhout"
-  },
-  {
-    id: "escher", time: "16:45", title: "Escher in Het Paleis", area: "Lange Voorhout",
+    id: "escher", time: "17:15", title: "Escher in Het Paleis", area: "Lange Voorhout",
     duration: "1 h", type: "Museo / palacio", color: "ink", map: "Escher in Het Paleis, Lange Voorhout 74, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Escher%20in%20het%20Paleis%2C%20The%20Hague%20%282015-08-13%29.jpg",
     facts: [
-      "El edificio fue un palacio y la reina Emma lo compró en 1896; hoy sus salas contienen más de 120 obras de M.C. Escher.",
-      "La colección muestra cómo Escher convirtió escaleras, reflejos, animales y formas geométricas en problemas visuales.",
-      "La monumental Metamorphosis III recorre una transformación continua de formas y ocupa una parte destacada de la experiencia."
+      "El edificio nació como palacio urbano y la reina Emma lo compró en 1896 como residencia real. Más tarde dejó de funcionar como residencia y se transformó en museo.",
+      "Hoy sus salas presentan la obra gráfica de M.C. Escher y mantienen buena parte de la decoración palaciega, de modo que se visitan dos historias a la vez: la de la monarquía y la de la ilusión óptica.",
+      "Las obras exploran perspectivas imposibles, reflejos, metamorfosis, teselaciones y relaciones entre arquitectura y matemáticas."
     ],
-    guide: "No lo visites solo como un museo de grabados: fíjate en el propio palacio y en cómo las ilusiones de Escher juegan con la arquitectura que tienes alrededor.",
-    curious: "La exposición incluye experiencias sobre percepción, reflexión y perspectiva que ayudan a entender cómo funcionan sus ilusiones.",
-    visit: "Martes-domingo 11:00–17:00. Entrada adulto 2026: €14,50; estudiante €13,50; 7–12 años €8.",
+    guide: "No te centres únicamente en las obras. Mira las lámparas, techos y escaleras del antiguo palacio: Escher funciona especialmente bien aquí porque el edificio también juega con nuestra percepción del espacio.",
+    curious: "El museo conserva más de un centenar de obras de Escher y utiliza también recursos interactivos para explicar cómo funcionan sus ilusiones.",
+    visit: "Martes-domingo 11:00–17:00. Entrada adulto €14,50; comprueba precios y horarios oficiales antes de la visita.",
     price: "€14,50 adulto",
     source: "Escher in Het Paleis", sourceUrl: "https://escherinhetpaleis.nl/es/visitar/entradas"
   },
   {
-    id: "panorama", time: "17:45", title: "Panorama Mesdag", area: "Zeestraat",
-    duration: "55 min", type: "Museo", color: "sand", map: "Panorama Mesdag, Zeestraat 65, Den Haag, Netherlands",
+    id: "paleistuin", time: "18:25", title: "Paleistuin · Jardines del Palacio", area: "Prinsessewal",
+    duration: "20 min", type: "Jardín histórico", color: "water", map: "Paleistuin, Prinsessewal, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Royal%20Palace%20Garden%2C%20The%20Hague%20%282015%29%2001.jpg",
     facts: [
-      "El Panorama de Scheveningen se terminó en 1881 y conserva una vista circular del antiguo pueblo pesquero y sus dunas.",
-      "El lienzo mide unos 1.680 m² y el edificio está diseñado para que la perspectiva parezca continuar más allá del borde de la pintura.",
-      "Hendrik Willem Mesdag lo pintó en unos cuatro meses con ayuda de otros artistas, entre ellos George Hendrik Breitner y Sientje Mesdag-van Houten."
+      "La Paleistuin es el jardín público situado detrás del Palacio Noordeinde, el palacio de trabajo del rey. Sus orígenes se remontan al entorno palaciego de comienzos del siglo XVII.",
+      "El jardín está relacionado con el conjunto formado por Noordeinde, las Caballerizas Reales y los Archivos Reales.",
+      "Hoy es un parque urbano de acceso público: un espacio cotidiano que conserva la relación física con el mundo de la monarquía."
     ],
-    guide: "Sube a la plataforma central y busca primero el horizonte. Después baja la mirada: arena real, objetos y pintura se mezclan para que el cerebro deje de distinguir dónde termina el museo.",
-    curious: "Es una cápsula de tiempo: puedes comparar la Scheveningen pintada en 1881 con la ciudad costera que verías hoy.",
-    visit: "Martes-domingo 10:00–17:00. Entrada adulto 2026: €17,50; hasta 18 años gratis.",
-    price: "€17,50 adulto",
-    source: "Museum Panorama Mesdag", sourceUrl: "https://panorama-mesdag.nl/bezoek/"
+    guide: "Es un buen final para la ruta porque cambia completamente el ritmo. Después de política, arte y monumentos, el jardín devuelve la escala humana y permite descansar.",
+    curious: "La Paleistuin no es un jardín botánico monumental: su interés está precisamente en ser un pequeño parque público escondido detrás de un palacio real.",
+    visit: "Entrada gratuita. El horario de apertura puede variar según la época del año.",
+    source: "Den Haag / Paleistuin", sourceUrl: "https://www.denhaag.nl/"
   },
   {
-    id: "peace", time: "18:30", title: "Palacio de la Paz", area: "Carnegieplein",
-    duration: "45 min", type: "Monumento internacional", color: "sky", map: "Peace Palace, Carnegieplein 2, Den Haag, Netherlands",
+    id: "juliana", time: "18:55", title: "Monumento a la Reina Juliana", area: "Koekamp / Centraal Station",
+    duration: "10 min", type: "Monumento", color: "rose", map: "Koningin Julianamonument, Bezuidenhoutseweg, Den Haag, Netherlands",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Beeldengroep%20ter%20herinnering%20van%20Koningin%20Juliana.jpg",
     facts: [
-      "El Palacio de la Paz abrió en 1913, financiado en gran parte por Andrew Carnegie, y se convirtió en símbolo de la vocación internacional de La Haya.",
-      "Alberga la Corte Internacional de Justicia y la Corte Permanente de Arbitraje.",
-      "El Visitors Centre explica la historia del edificio y de las instituciones mediante una audioguía de unos 30 minutos.",
-      "La visita al palacio y a los jardines solo es posible mediante una visita guiada; el Visitors Centre es de acceso gratuito."
+      "El monumento recuerda a la reina Juliana y se encuentra en la zona de Koekamp, junto a Den Haag Centraal.",
+      "La obra fue creada por la artista Ingrid Mol y se presentó en 2024, convirtiéndose en una incorporación reciente al paisaje monumental de La Haya.",
+      "Su posición junto a una gran entrada de transporte público conecta la memoria de la monarquía con la ciudad contemporánea."
     ],
-    guide: "La Haya se entiende aquí como algo más que una capital política: desde principios del siglo XX la ciudad se convirtió también en escenario de la justicia y el derecho internacionales.",
-    curious: "El Camino Mundial de la Paz reúne piedras procedentes de países de todo el mundo, creando un recorrido simbólico alrededor del complejo.",
-    visit: "Visitors Centre: domingo 12:00–17:00, entrada y audioguía gratuitas. Las visitas guiadas al palacio/jardines requieren reserva y tienen tarifas propias.",
-    price: "Visitors Centre: gratis",
-    source: "Peace Palace", sourceUrl: "https://www.vredespaleis.nl/visit/visitors-centre-2/?lang=en"
-  },
-  {
-    id: "grote-kerk", time: "19:15", title: "Grote Kerk & Haagse Toren", area: "Torenstraat",
-    duration: "45–90 min", type: "Iglesia / mirador", color: "purple", map: "Grote Kerk, Rond de Grote Kerk 12, Den Haag, Netherlands",
-    facts: [
-      "La Grote Kerk está entre los edificios históricos esenciales de La Haya y su historia se remonta al desarrollo medieval del pueblo.",
-      "La torre hexagonal actual se levantó alrededor de 1420 y alcanza unos 92,5 metros.",
-      "La Casa de Orange mantiene una relación histórica con la iglesia: varios miembros fueron bautizados allí.",
-      "El interior conserva elementos como la pila, la predicación renacentista y escudos relacionados con la historia política y nobiliaria de la ciudad."
-    ],
-    guide: "Si el horario te lo permite, mira la torre desde la plaza antes de entrar. Sus seis lados hacen que parezca distinta según desde qué calle llegues.",
-    curious: "La subida requiere 288 escalones y ofrece una vista panorámica; para esta ruta conviene reservarla en una franja específica y no dejarla para el final.",
-    visit: "La parada de las 17:30 está planteada como exterior. Si quieres subir a la torre, consulta la franja del día y sustituye otra visita; el precio publicado puede variar según la visita.",
-    source: "Grote Kerk / DenHaag.com", sourceUrl: "https://denhaag.com/en/big-church"
+    guide: "He dejado esta parada para el final porque permite terminar la caminata cerca de la estación. Es una forma sencilla de cerrar el recorrido conectando la historia de la Casa de Orange con la Haya actual.",
+    curious: "El monumento fue inaugurado en 2024 por la princesa Beatriz, hija de Juliana.",
+    visit: "Parada exterior gratuita.",
+    source: "Den Haag / Koningin Julianamonument", sourceUrl: "https://www.denhaag.nl/"
   }
 ];
 
@@ -208,7 +268,7 @@ function mapsSearch(place) {
 }
 
 function App() {
-  const [selected,setSelected]=useState("binnenhof");
+  const [selected,setSelected]=useState("nieuwe-kerk");
   const [playing,setPlaying]=useState(false);
   const [filter,setFilter]=useState("Todos");
   const [foodTab,setFoodTab]=useState("comer");
@@ -216,7 +276,7 @@ function App() {
   const [mobileMenu,setMobileMenu]=useState(false);
   const goPage = (next) => { setPage(next); setMobileMenu(false); window.scrollTo({top:0,behavior:"smooth"}); if ("speechSynthesis" in window) window.speechSynthesis.cancel(); setPlaying(false); };
 
-  const categories=["Todos","Monumento","Museo","Palacio","Avenida histórica","Monumento internacional","Iglesia / mirador"];
+  const categories=["Todos","Monumento","Museo","Palacio","Iglesia histórica","Complejo histórico","Edificio histórico","Barrio","Arte urbano","Curiosidad histórica","Jardín histórico"];
   const visible=useMemo(()=>filter==="Todos"?stops:stops.filter(s=>s.type===filter),[filter]);
   const selectedStop=stops.find(s=>s.id===selected) ?? stops[0];
 
@@ -248,11 +308,11 @@ function App() {
           <div className="eyebrow"><CalendarDays size={15}/> GUÍA HISTÓRICA · LA HAYA</div>
           <h1>La Haya,<br/><em>entre reyes y justicia.</em></h1>
           <p className="heroLead">Una guía a pie para entender la ciudad, no solo verla: cómo nació alrededor de un hof medieval, por qué una cigüeña acabó en su escudo, cómo llegó la monarquía y qué papel jugó La Haya durante la ocupación nazi.</p>
-          <div className="heroActions"><a className="button primary" href="#ruta"><Route size={17}/> Ver las paradas</a><a className="button ghost" href="#mapa"><MapPin size={17}/> Mapa y transporte</a></div>
+          <div className="heroActions"><button className="button primary" onClick={()=>goPage("paradas")}><Route size={17}/> Ver las paradas</button><button className="button ghost" onClick={()=>goPage("mapa")}><MapPin size={17}/> Mapa y transporte</button></div>
         </div>
         <div className="heroCard">
           <div className="cardKicker">EN UNA MIRADA</div><div className="bigNumber">1230</div><div className="bigLabel">el punto de partida de la Hofstad</div>
-          <div className="miniRow"><span>11</span><b>paradas</b><span>4</span><b>temas históricos</b></div><div className="line"></div>
+          <div className="miniRow"><span>15</span><b>paradas</b><span>4</span><b>temas históricos</b></div><div className="line"></div>
           <p>Origen medieval · Casa Real · arte · justicia internacional · memoria de la Segunda Guerra Mundial.</p>
         </div>
       </div>
@@ -306,8 +366,18 @@ function App() {
       <section className="royalSection splitSection">
         <div><span className="sectionNo">04 / LA CASA REAL</span><h2>¿Dónde está la familia real?</h2></div>
         <div className="royalCards">
-          <div className="royalCard"><Crown/><h3>Palacio Noordeinde</h3><p>Es el <strong>lugar de trabajo del rey</strong>. Las oficinas del rey y la reina Máxima están aquí. Es el palacio que encontrarás en la ruta.</p><a href="#stop-noordeinde">Ir a la parada →</a></div>
+          <div className="royalCard"><Crown/><h3>Palacio Noordeinde</h3><p>Es el <strong>lugar de trabajo del rey</strong>. Las oficinas del rey y la reina Máxima están aquí. Es el palacio que encontrarás en la ruta.</p><button className="inlineLink" onClick={()=>{goPage("paradas")}}>Ir a la parada →</button></div>
           <div className="royalCard"><Crown/><h3>Huis ten Bosch</h3><p>Es la <strong>residencia familiar</strong> donde viven el rey Willem-Alexander y su familia. Está en el Haagse Bos y no forma parte del paseo del centro.</p><a href="https://www.google.com/maps/search/?api=1&query=Huis+ten+Bosch+Palace+The+Hague" target="_blank" rel="noreferrer">Ver en Google Maps →</a></div>
+        </div>
+      </section>
+
+      <section className="justiceExplainer splitSection">
+        <div><span className="sectionNo">04 / LA HAYA JURÍDICA</span><h2>¿Tribunal Supremo europeo? Hay que distinguir tres cosas.</h2></div>
+        <div className="story">
+          <p><strong>La Haya no alberga un “Tribunal Supremo de Europa”.</strong> Si buscas el máximo tribunal nacional neerlandés, es la <button className="inlineLink" onClick={()=>{goPage("paradas")}}>Hoge Raad</button>, cuya sede actual está en Korte Voorhout.</p>
+          <p>Si hablamos de la <strong>Unión Europea</strong>, el Tribunal de Justicia de la Unión Europea tiene su sede en <strong>Luxemburgo</strong>. Y si hablamos de derechos humanos europeos, el Tribunal Europeo de Derechos Humanos está en <strong>Estrasburgo</strong>.</p>
+          <p>Lo que convirtió a La Haya en una capital jurídica internacional fue otra historia: las Conferencias de Paz de 1899 y 1907, la creación de la Corte Permanente de Arbitraje y, después, la instalación en el Palacio de la Paz de la Corte Permanente de Justicia Internacional en 1922 y de su sucesora, la Corte Internacional de Justicia, desde 1946.</p>
+          <div className="quoteBox">La Haya no es “la capital judicial de Europa” por albergar un único tribunal: lo es por la concentración histórica de instituciones de derecho internacional.</div>
         </div>
       </section>
 
@@ -325,7 +395,7 @@ function App() {
                 <div className="guideNote"><History size={17}/><div><strong>Como te lo contaría un guía</strong><br/>{stop.guide}</div></div>
                 <div className="curious"><Sparkles size={17}/><div><strong>Dato curioso</strong><br/>{stop.curious}</div></div>
                 <div className="visitNote"><Clock3 size={16}/><div><strong>Consejo de visita {stop.price && `· ${stop.price}`}</strong><br/>{stop.visit}</div></div>
-                <div className="relatedLinks"><strong>Continúa la historia:</strong> <button onClick={e=>{e.stopPropagation();goPage("inicio")}}>origen de La Haya</button> · <button onClick={e=>{e.stopPropagation();goPage("mapa")}}>mapa y transporte</button> · <button onClick={e=>{e.stopPropagation();goPage("restauracion")}}>comer y tomar café</button><br/><strong>Otras paradas relacionadas:</strong> {stops.filter(other=>other.id!==stop.id && ["binnenhof","noordeinde","peace","grote-kerk"].includes(other.id)).map((other,i)=><React.Fragment key={other.id}>{i>0?" · ":""}<button onClick={e=>{e.stopPropagation();setSelected(other.id);goPage("paradas")}}>{other.title}</button></React.Fragment>)}</div>
+                <div className="relatedLinks"><strong>Continúa la historia:</strong> <button onClick={e=>{e.stopPropagation();goPage("inicio")}}>origen de La Haya</button> · <button onClick={e=>{e.stopPropagation();goPage("mapa")}}>mapa y transporte</button> · <button onClick={e=>{e.stopPropagation();goPage("restauracion")}}>comer y tomar café</button><br/><strong>Otras paradas relacionadas:</strong> {stops.filter(other=>other.id!==stop.id && ["binnenhof","mauritshuis","noordeinde","supreme-court","peace","grote-kerk"].includes(other.id)).map((other,i)=><React.Fragment key={other.id}>{i>0?" · ":""}<button onClick={e=>{e.stopPropagation();setSelected(other.id);goPage("paradas")}}>{other.title}</button></React.Fragment>)}</div>
                 <div className="detailActions"><a className="smallButton" href={mapsSearch(stop.map)} target="_blank" rel="noreferrer"><MapPin size={15}/> Cómo llegar</a>{stop.sourceUrl&&<a className="smallButton secondary" href={stop.sourceUrl} target="_blank" rel="noreferrer">Fuente oficial <ExternalLink size={14}/></a>}<button className="smallButton audioButton" onClick={e=>{e.stopPropagation();toggleAudio()}}>{playing?<Pause size={15}/>:<AudioLines size={15}/>} {playing?"Parar audio":"Escuchar"}</button></div>
               </div>}
             </div>
@@ -336,7 +406,7 @@ function App() {
       <section id="mapa" className="mapSection">
         <div className="mapCopy"><span className="sectionNo">05 / MAPA + TRANSPORTE</span><h2>Desde Slaakstraat hasta La Haya y de vuelta.</h2>
           <p>He dejado Google Maps como navegador de la ruta para que pueda recalcular transporte y horarios en tiempo real. El punto de partida es <strong>Slaakstraat, Ámsterdam</strong>. Salida prevista a las <strong>10:30 en transporte público</strong>; el viaje suele requerir alrededor de una hora, según conexiones. La primera parada está programada sobre las 11:35: comprueba el trayecto en vivo antes de salir.</p>
-          <div className="routeBox"><div><Train size={18}/><strong>Ida</strong><span>10:30 · Slaakstraat → Binnenhof / Den Haag Centrum</span></div><div><Route size={18}/><strong>Ruta</strong><span>Recorrido a pie por las 10 paradas culturales (la pausa de comida queda fuera del trazado)</span></div><div><Train size={18}/><strong>Vuelta</strong><span>Centro de La Haya → Slaakstraat, Ámsterdam</span></div></div>
+          <div className="routeBox"><div><Train size={18}/><strong>Ida</strong><span>10:30 · Slaakstraat → Binnenhof / Den Haag Centrum</span></div><div><Route size={18}/><strong>Ruta</strong><span>Recorrido a pie por las paradas culturales (la pausa de comida queda fuera del trazado)</span></div><div><Train size={18}/><strong>Vuelta</strong><span>Centro de La Haya → Slaakstraat, Ámsterdam</span></div></div>
           <div className="heroActions mapActions"><a className="button primary" href={fullRoute} target="_blank" rel="noreferrer"><Route size={17}/> Google Maps · ida + ruta + vuelta</a><a className="button secondaryButton" href={walkRoute} target="_blank" rel="noreferrer"><MapPin size={17}/> Ruta a pie por el centro</a><a className="button secondaryButton" href={GOOGLE_MAPS_LIST_URL} target="_blank" rel="noreferrer"><MapPin size={17}/> Lista guardada</a></div>
           <div className="mapNotice"><strong>Consejo práctico</strong><span>Google Maps recalculará el transporte público según la hora real. Para la caminata central, usa el enlace de ruta a pie; para salir y volver a Ámsterdam, usa el enlace completo.</span></div>
         </div>
@@ -347,14 +417,14 @@ function App() {
         <div className="foodHead"><div><span className="sectionNo">06 / RESTAURACIÓN</span><h2>Comer bien sin convertir la comida en otra visita turística.</h2></div><p>Opciones centradas en el centro de La Haya. El ranking de comida usa valoraciones actuales de Google Maps; los precios son orientativos y se han elegido opciones donde es viable comer por unos 10–20 € por persona.</p></div>
         <div className="foodTabs"><button className={foodTab==="comer"?"active":""} onClick={()=>setFoodTab("comer")}><Utensils size={16}/> Comer · 4,5+</button><button className={foodTab==="cerveza"?"active":""} onClick={()=>setFoodTab("cerveza")}><Beer size={16}/> Cervezas curiosas</button><button className={foodTab==="cafe"?"active":""} onClick={()=>setFoodTab("cafe")}><Coffee size={16}/> Café de especialidad</button></div>
 
-        {foodTab==="comer" && <div className="foodGrid">{food.map(x=><article className="foodCard" key={x.name}><div className="rank">#{x.rank}</div><div className="foodRating">★ {x.rating}</div><h3>{x.name}</h3><p className="foodPrice"><CircleDollarSign size={14}/>{x.price}</p><p>{x.why}</p><span className="address">{x.address}</span><a href={mapsSearch(x.maps)} target="_blank" rel="noreferrer">Google Maps <ArrowUpRight size={14}/></a></article>)}</div>}
-        {foodTab==="cerveza" && <div className="foodGrid">{beer.map((x,i)=><article className="foodCard beerCard" key={x.name}><div className="rank">#{i+1}</div><div className="foodRating">★ {x.rating}</div><h3>{x.name}</h3><p>{x.why}</p><span className="address">{x.address}</span><a href={mapsSearch(x.maps)} target="_blank" rel="noreferrer">Google Maps <ArrowUpRight size={14}/></a></article>)}</div>}
-        {foodTab==="cafe" && <div className="foodGrid">{coffee.map((x,i)=><article className="foodCard coffeeCard" key={x.name}><div className="rank">#{i+1}</div><div className="foodRating">★ {x.rating}</div><h3>{x.name}</h3><p>{x.why}</p><span className="address">{x.address}</span><a href={mapsSearch(x.maps)} target="_blank" rel="noreferrer">Google Maps <ArrowUpRight size={14}/></a></article>)}</div>}
+        {foodTab==="comer" && <div className="foodGrid">{food.map(x=><article className="foodCard" key={x.name}><div className="rank">#{x.rank}</div><div className="foodRating">★ {x.rating}</div><h3>{x.name}</h3><p className="foodPrice"><CircleDollarSign size={14}/>{x.price}</p><p>{x.why}</p><span className="address">{x.address}</span><a href={mapsSearch(x.maps)} target="_self" rel="noreferrer">Google Maps <ArrowUpRight size={14}/></a></article>)}</div>}
+        {foodTab==="cerveza" && <div className="foodGrid">{beer.map((x,i)=><article className="foodCard beerCard" key={x.name}><div className="rank">#{i+1}</div><div className="foodRating">★ {x.rating}</div><h3>{x.name}</h3><p>{x.why}</p><span className="address">{x.address}</span><a href={mapsSearch(x.maps)} target="_self" rel="noreferrer">Google Maps <ArrowUpRight size={14}/></a></article>)}</div>}
+        {foodTab==="cafe" && <div className="foodGrid">{coffee.map((x,i)=><article className="foodCard coffeeCard" key={x.name}><div className="rank">#{i+1}</div><div className="foodRating">★ {x.rating}</div><h3>{x.name}</h3><p>{x.why}</p><span className="address">{x.address}</span><a href={mapsSearch(x.maps)} target="_self" rel="noreferrer">Google Maps <ArrowUpRight size={14}/></a></article>)}</div>}
       </section>
 
       <section id="audio" className="audioSection"><div className="audioIcon"><AudioLines size={28}/></div><div><span className="sectionNo">07 / AUDIOGUÍA</span><h2>Escucha la historia mientras caminas.</h2><p>La web usa Speech Synthesis del navegador. Selecciona una parada y pulsa «Escuchar» para convertir la ficha en una pequeña audioguía.</p></div><button className="button primary" onClick={toggleAudio}>{playing?<Pause size={17}/>:<Play size={17}/>} {playing?"Parar":`Escuchar: ${selectedStop.title}`}</button></section>
 
-      <section className="sourcesSection"><div><span className="sectionNo">08 / FUENTES Y ACTUALIZACIÓN</span><h2>Una guía que distingue historia de información práctica.</h2></div><div className="sourceList"><a href="https://haagsgemeentearchief.nl/ontdek-de-stad/verhalen-van-de-stad/het-ontstaan-van-den-haag" target="_blank" rel="noreferrer">Haags Gemeentearchief · origen y escudo <ExternalLink size={14}/></a><a href="https://haagshistorischmuseum.nl/collectie/topstukken/plattegrond-van-den-haag-in-1570/" target="_blank" rel="noreferrer">Haags Historisch Museum · mapa de 1570 <ExternalLink size={14}/></a><a href="https://www.royal-house.nl/topics/palaces" target="_blank" rel="noreferrer">Royal House · palacios y residencia real <ExternalLink size={14}/></a><a href="https://www.vredespaleis.nl/visit/visitors-centre-2/?lang=en" target="_blank" rel="noreferrer">Peace Palace · visita y audioguía <ExternalLink size={14}/></a></div></section>
+      <section className="sourcesSection"><div><span className="sectionNo">08 / FUENTES Y ACTUALIZACIÓN</span><h2>Una guía que distingue historia de información práctica.</h2></div><div className="sourceList"><a href="https://haagsgemeentearchief.nl/ontdek-de-stad/verhalen-van-de-stad/het-ontstaan-van-den-haag" target="_blank" rel="noreferrer">Haags Gemeentearchief · origen y escudo <ExternalLink size={14}/></a><a href="https://haagshistorischmuseum.nl/collectie/topstukken/plattegrond-van-den-haag-in-1570/" target="_blank" rel="noreferrer">Haags Historisch Museum · mapa de 1570 <ExternalLink size={14}/></a><a href="https://www.royal-house.nl/topics/palaces" target="_blank" rel="noreferrer">Royal House · palacios y residencia real <ExternalLink size={14}/></a><a href="https://www.vredespaleis.nl/visit/visitors-centre-2/?lang=en" target="_blank" rel="noreferrer">Peace Palace · visita y audioguía <ExternalLink size={14}/></a><a href="https://www.hogeraad.nl/over/" target="_blank" rel="noreferrer">Hoge Raad · historia y edificio <ExternalLink size={14}/></a><a href="https://www.icj-cij.org/history" target="_blank" rel="noreferrer">Corte Internacional de Justicia · historia <ExternalLink size={14}/></a><a href="https://eur-lex.europa.eu/eli/treaty/teu_2016/oj" target="_blank" rel="noreferrer">UE · sede del Tribunal de Justicia en Luxemburgo <ExternalLink size={14}/></a></div></section>
     </main>
     <footer><div><strong>LA HAYA · DEN HAAG</strong><br/><span>Guía histórica · actualizada para octubre de 2026</span></div><div>Camina despacio. Mira hacia arriba. Y deja que la ciudad cuente el resto.</div></footer>
   </div>;
